@@ -13,6 +13,9 @@ def lonn(request):
         if not validateInput(age, hours):
             return returnPage(request, dict)
 
+        age = int(age)
+        hours = int(hours)
+
         pay = getHourPay(age)
 
         dict["hourPay"] = pay

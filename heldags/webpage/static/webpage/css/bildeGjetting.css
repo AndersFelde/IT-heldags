@@ -1,0 +1,30 @@
+.blockDiv {
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+.bildeGjettingDiv {
+    height: 600px;
+    width: 600px;
+    display: block;
+    margin: auto;
+    background-image: url("/static/webpage/images/Oppgave2.jpg");
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+#square1 {
+    background: #ddd;
+}
+
+#square2 {
+    background: #bbb;
+}
+
+#square3 {
+    background: #aaa;
+}
+
+#square4 {
+    background: #ccc;
+}

@@ -5,34 +5,23 @@
 <input type="hidden" value="lonn" id="active">
 <div class="container mb-5 mt-3 w-50">
     {% if hourPay %}
-    <table class="table table-sm table-dark">
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                        ...
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        ...
-                    </tr>
-                    <tr class="align-bottom">
-                        ...
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td class="align-top">This cell is aligned to the top.</td>
-                        <td>...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Timelønn</th>
+                <th scope="col">Ukelønn</th>
+                <th scope="col">Månedslønn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{hourPay}}</th>
+                <td>{{weekPay}}</td>
+                <td>{{monthPay}}</td>
+            </tr>
+        </tbody>
     </table>
-
-    {% else %}
-
+    {% endif %}
     <form method="POST">
         {% csrf_token %}
         <div class="mb-3">
@@ -45,7 +34,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Send inn</button>
     </form>
-    {% endif %}
 </div>
 
 {% endblock content %}
