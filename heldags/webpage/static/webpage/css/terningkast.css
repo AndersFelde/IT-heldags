@@ -1,0 +1,27 @@
+#chart,
+#values {
+    width: 100%;
+    display: flex;
+    height: 50%;
+    align-items: flex-end;
+}
+
+#chart {
+    margin-top: 5%;
+}
+
+.bar,
+.value {
+    display: block;
+    width: 16%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bar {
+    background-color: #0269a4;
+}
+
+.value {
+    text-align: center;
+}

@@ -3,14 +3,17 @@ from django.shortcuts import render
 
 
 def lonn(request):
-    dict = {"sent": False}
+    dict = {}
+    # setter det til false slik at den ikke loader tabellen i html, hvis brukeren ikke har skrevet noe
     if request.method == "POST":
+        # betyr at brukeren har sendt inn form
         data = request.POST
 
         age = data.get("age")
         hours = data.get("hours")
 
         if not validateInput(age, hours):
+            # ville ha returnPage funksjon fordi ellers ville den her bli for mye copy-paste
             return returnPage(request, dict)
 
         age = int(age)

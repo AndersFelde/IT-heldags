@@ -1,0 +1,56 @@
+{% extends 'webpage/includes/base.html' %}
+{% load static %}
+{% block title %}Terningkast{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'webpage/css/terningkast.css' %}">
+<script src="{% static 'webpage/javascript/terningkast.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<input type="hidden" value="terningkast" id="active">
+<div class="container mb-5 mt-3 w-50">
+    {% if terningkastState %}
+    <p>Antall kast</p>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="200" id="amount"></div>
+    </div>
+    <p>Sum</p>
+    <div class="progress">
+        <div class="progress-bar" style="width:0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" id="sum"></div>
+    </div>
+    <br>
+    <button id="throwDice" type="button" onclick="throwDice()" class="btn btn-primary">Trill Terning</button>
+    <p id="throw"></p>
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="amountDices" class="form-label">Hvor mange terninger skal kastes?</label>
+            <select class="form-select" name="amountDices">
+                <option selected value="10">10 terninger</option>
+                <option value="50">50 terninger</option>
+                <option value="100">100 terninger</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" name="throwDices" value="True">Kast Terninger</button>
+    </form>
+    {% if throws %}
+    <div id="chart">
+        {% for key, value in throws.items %}
+        <div class="bar" name="{{key}}" style="height:{{value}}0px"></div>
+        {% endfor %}
+    </div>
+    <div id="values">
+        {% for key, value in throws.items %}
+        <div class="value">{{key}} : {{value}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="container mb-5 mt-3 w-50">
+    <form method="POST">
+        {% csrf_token %}
+        <button style="margin-top: 10%" type="submit" class="btn btn-info" name="switchMode" value="True">Bytt til '{{ switch }}'-modus</button>
+    </form>
+</div>
+{% endblock content %}
